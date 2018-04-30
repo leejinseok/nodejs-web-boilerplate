@@ -1,0 +1,29 @@
+// @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+// @import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+// @import url(//fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
+// @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+// @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+// @import url(//fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+
+@import './_variables';
+@import './_fonts';
+
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+* {
+  letter-spacing: -.025rem; // box-shadow: 0 0 1px 0 red;
+}
+
+html, body {
+  font-family: $main_font;
+}
+
+.container {
+  max-width: $full_width;
+  margin: 0 auto;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}

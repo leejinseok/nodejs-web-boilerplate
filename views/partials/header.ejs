@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="oldDiaryApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="6.13지방선거">
+    <meta name="viewport" content="width=device-width, initial-scale=0, shrink-to-fit=no">
+    <link rel="stylesheet" href="/static/css/reset.css">
+    <link rel="stylesheet" href="/resources/css/base.css">
+    <% for(i = 0; i < css.length; i++) { %>
+        <link rel="stylesheet" href="<%= css[i] %>">
+    <% } %>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="/static/js/prefixfree.min.js"></script>
+    <script src="/static/js/angular.min.js"></script>
+    <script src="/resources/js/base.js"></script>
+    <% for (i = 0; i < js.length; i++) { %>
+        <script src="<%= js[i] %>"></script>
+    <% } %>
+    <title>레이니헤븐 웹 표준 프로젝트</title>
+</head>
+<body>
+<!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
