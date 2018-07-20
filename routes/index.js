@@ -3,12 +3,12 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', async (req, res, next) => {
-  res.render('home', {
+  res.render('index', {
     css: [
-      '/resources/css/home.css'
+      '/resources/css/index.css'
     ],
     js: [
-      '/resources/js/home.js'
+      '/resources/js/index.js'
     ]
   });
 });
