@@ -5,10 +5,10 @@ const router = express.Router();
 router.get('/', async (req, res, next) => {
   res.render('index', {
     css: [
-      '/resources/css/index.css'
+      '/static/css/index.css'
     ],
     js: [
-      '/resources/js/index.js'
+      '/static/js/index.js'
     ]
   });
 });
