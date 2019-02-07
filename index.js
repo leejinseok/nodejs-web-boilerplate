@@ -8,6 +8,7 @@ const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const logErrors = require('./middlewares/logErrors');
+const clientErrorHandler = require('./middlewares/clientErrorHandler');
 const errorHandler = require('./middlewares/errorHandler');
 
 require('dotenv').config();
@@ -20,8 +21,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use('/static', express.static(`${__dirname}/static`));
 app.use('/', routes);
-app.use(logErrors);
-app.use(errorHandler);
+app.use(logErrors); // error stacktracke
+app.use(clientErrorHandler); // ajax 요청일 경우와 아닌경우 next()
+app.use(errorHandler); // 페이지에서 접근했을 경우
 app.get('*', (req, res, next) => {
   res.send('404 Not Found!');
 });
