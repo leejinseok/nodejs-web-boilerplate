@@ -2,6 +2,7 @@ global.__base = __dirname + '/';
 const express = require('express');
 const app = express();
 const path = require('path');
+const api = require('./api');
 const routes = require('./routes');
 const helmet = require('helmet');
 const compression = require('compression');
@@ -20,6 +21,7 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use('/static', express.static(`${__dirname}/static`));
+app.use('/api', api);
 app.use('/', routes);
 app.use(logErrors); // error stacktracke
 app.use(clientErrorHandler); // ajax 요청일 경우와 아닌경우 next()
