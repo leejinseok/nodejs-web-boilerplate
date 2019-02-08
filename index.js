@@ -8,6 +8,7 @@ const helmet = require('helmet');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const csrf = require('csurf');
 const logErrors = require('./middlewares/logErrors');
 const clientErrorHandler = require('./middlewares/clientErrorHandler');
 const errorHandler = require('./middlewares/errorHandler');
@@ -18,8 +19,9 @@ app.set('views', path.join(`${__dirname}/views`));
 app.use(helmet());
 app.use(compression());
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(csrf({ cookie: true }));
 app.use('/static', express.static(`${__dirname}/static`));
 app.use('/api', api);
 app.use('/', routes);
