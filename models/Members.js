@@ -6,17 +6,19 @@ const pool = mysql.createPool(connectionInfo);
  * 
  */
 exports.query = async (sql) => {
+  let connection = null;
   try {
-    const connection = await pool.getConnection(async conn => conn);
-    try {
-      const result = await connection.query(sql);
-      connection.release();
-      return result;
-    } catch (err) {
-      connection.release();
-      throw new Error(err);
-    }
+    connection = await pool.getConnection(async conn => conn);
   } catch (err) {
+    throw new Error(err);
+  }
+
+  try {
+    let result = await connection.query(sql);
+    connection.release();
+    return result;
+  } catch (err) {
+    connection.release();
     throw new Error(err);
   }
 }
