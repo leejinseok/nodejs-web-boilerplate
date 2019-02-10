@@ -4,7 +4,10 @@ class Members extends Model {
   constructor () {
     super();
   }
+
+  static get tableName () {
+    return 'Members';
+  }
 }
 
-exports.init = Members;
-exports.tableName = 'Members';
+module.exports = Members;
