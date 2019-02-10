@@ -6,10 +6,18 @@ class Model {
   constructor () {
   }
 
+  async getConnection () {
+    try {
+      return await pool.getConnection(async connection => connection);
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+
   async query (sql) {
     let connection = null;
     try {
-      connection = await pool.getConnection(async connection => connection);
+      connection = await this.getConnection();
     } catch (err) {
       throw new Error(err);
     }
