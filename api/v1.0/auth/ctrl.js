@@ -3,7 +3,7 @@ const Members = require('../../../models/Members');
 exports.getTest = (req, res, next) => {
   let membersModel = null;
   try {
-    membersModel = await new Members();
+    membersModel = await Members();
   } catch (error) {
     return next(error);
   }

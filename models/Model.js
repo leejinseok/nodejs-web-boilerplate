@@ -4,24 +4,23 @@ const pool = mysql.createPool(connectionInfo);
 
 class Model {
   constructor () {
-    return (async () => {
-      try {
-        this.connection = await pool.getConnection(async connection => connection);
-      } catch (error) {
-        throw new Error(error);
-      }
-      return this;
-    })();
   }
 
   async query (sql) {
+    let connection = null;
     try {
-      const result = await this.connection.query(sql);
-      this.connection.release();
+      connection = await pool.getConnection(async connection => connection);
+    } catch (err) {
+      throw new Error(err);
+    }
+
+    try {
+      const result = await connection.query(sql);
       return result;
     } catch (err) {
-      this.connection.release();
       throw new Error(err);
+    } finally {
+      connection.release();
     }
   }
 }
