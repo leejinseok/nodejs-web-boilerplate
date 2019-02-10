@@ -4,14 +4,14 @@ const pool = mysql.createPool(connectionInfo);
 
 class Model {
   constructor () {
-    return new Promise (async (resolve, reject) => {
+    return (async () => {
       try {
-        this.connection = await pool.getConnection(async conn => conn);
+        this.connection = await pool.getConnection(async connection => connection);
       } catch (error) {
-        reject(error);
+        throw new Error(error);
       }
-      resolve(this);
-    });
+      return this;
+    })();
   }
 
   async query (sql) {
