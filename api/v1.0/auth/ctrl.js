@@ -1,17 +1,31 @@
-const Members = require('../../../models/Members');
+const Model = require('../../../models/Members')
+const Members = require('../../../models/Members')
 
 exports.getTest = (req, res, next) => {
-  let membersModel = null;
+  let connection = null
   try {
-    membersModel = await Members();
+    connection = await Model.getConnection()
   } catch (error) {
-    return next(error);
+    return next(error)
   }
 
-  let result = null;
-  try {
-    result = await membersModel.query(`SELECT * FROM ${Members.tableName}`);    
-  } catch (error) {
-    return next(error); 
-  }
+  let result = null
+  // try {
+  //   await connection.beginTransaction()
+  //   result = await connection.query(`SELECT * FROM ${Member.tableName}`)
+  //   connection.release()
+  // } catch (error) {
+  //   return next(error)
+  // } finally {
+  // }
+
+  // try {
+  //   await connection.beginTransaction()
+  //   await connection.query(`INSERT INTO ${Member.tableName} (id, pwd) VALUES ('id', 'pwd')`)
+  //   await connection.query(`INSERT INTO ${Member.tableName} (id, pw2d) VALUES ('id', 'pwd')`)
+  //   connection.commit()
+  // } catch (error) {
+  //   connection.rollback()
+  //   return next(error)
+  // }
 }
