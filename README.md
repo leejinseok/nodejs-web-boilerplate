@@ -12,4 +12,3 @@
 - JSON Web Token
 - Compression
 - RESTfull API
-- 
